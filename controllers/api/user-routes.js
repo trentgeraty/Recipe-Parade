@@ -34,17 +34,17 @@ router.get('/:id', (req, res) => {
                 'created_at']
           },
           // include the Comment model here:
-          {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'created_at'],
-            include: {
-              model: Recipe,
-              attributes: ['title']
-            }
-          },
+        //   {
+        //     model: Comment,
+        //     attributes: ['id', 'comment_text', 'created_at'],
+        //     include: {
+        //       model: Recipe,
+        //       attributes: ['title']
+        //     }
+        //   },
           {
             model: Recipe,
-            attributes: ['title'],
+            attributes: ['title', 'ingredients', 'directions', 'created_at'],
           }
         ]
       })
