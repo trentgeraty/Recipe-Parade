@@ -3,7 +3,7 @@ const { Recipe } = require('../models');
 const recipeData = [
   {
     title: 'Tiramisu',
-    ingredients: ['coffee', 'biscuits'],
+    ingredients: 'coffee, biscuits',
     directions: 'Adding all the directions here.',
     user_id: 1
     
