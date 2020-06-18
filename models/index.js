@@ -1,27 +1,69 @@
 const User = require('./User');
 const Recipe = require('./Recipe');
-const Tags = require('./Tags');
+const Tag = require('./Tags');
 const SavedRecipes = require('./SavedRecipes');
 // const Comment = require('./Comment');
 
 //create associations
-// User.hasMany(Post, {
-//     foreignKey: 'user_id'
-// });
+User.hasMany(Recipe, {
+    foreignKey: 'user_id'
+});
 
 
-// Post.belongsTo(User, {
-//     foreignKey: 'user_id',
-//     onDelete: "cascade"
-// });
+Recipe.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: "cascade"
+});
+
+// Recipes belongToMany Tags (through RecipeTag)
+Recipe.belongsToMany(Tag, {
+    through: RecipeTag,
+    as: 'tagged_recipes',
+    foreignKey: 'recipe_id'
+});
+  
+
+// Tags belongToMany Recipes (through RecipeTag)
+Tag.belongsToMany(Recipe, {
+    through: RecipeTag,
+    as: 'tagged_recipes',
+    foreignKey: 'tag_id'
+});
+
+
+User.hasMany(Tag, {
+    foreignKey: 'user_id'
+});
+
+
+Recipe.hasMany(Tag, {
+    foreignKey: 'recipe_id'
+});
+
+
+SavedRecipes.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+SavedRecipes.belongsTo(Recipe, {
+    foreignKey: 'recipe_id'
+});
+
+User.hasMany(SavedRecipes, {
+    foreignKey: 'user_id'
+});
+
+Recipe.hasMany(SavedRecipes, {
+    foreignKey: 'recipe_id'
+});
 
 // Comment.belongsTo(User, {
 //     foreignKey: 'user_id',
 //     onDelete: "cascade"
 // });
 
-// Comment.belongsTo(Post, {
-//     foreignKey: 'post_id',
+// Comment.belongsTo(Recipe, {
+//     foreignKey: 'recipe_id',
 //     onDelete: "cascade"
 // });
 
@@ -30,11 +72,11 @@ const SavedRecipes = require('./SavedRecipes');
 //     onDelete: "cascade"
 // });
 
-// Post.hasMany(Comment, {
-//     foreignKey: 'post_id',
+// Recipe.hasMany(Comment, {
+//     foreignKey: 'recipe_id',
 //     onDelete: "cascade"
 // })
 
 
 
-module.exports = { User, Recipe, Tags, SavedRecipes };
+module.exports = { User, Recipe, Tag, SavedRecipes };
