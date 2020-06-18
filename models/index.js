@@ -1,5 +1,7 @@
 const User = require('./User');
-// const Post = require('./Post');
+const Recipe = require('./Recipe');
+const Tags = require('./Tags');
+const SavedRecipes = require('./SavedRecipes');
 // const Comment = require('./Comment');
 
 //create associations
@@ -35,5 +37,4 @@ const User = require('./User');
 
 
 
-// module.exports = { User, Post, Comment };
-module.exports = { User };
+module.exports = { User, Recipe, Tags, SavedRecipes };

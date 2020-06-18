@@ -2,11 +2,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Recipe model
-class SavedRecipe extends Model {}
+// create our Saved Recipes model
+class SavedRecipes extends Model {}
 
 // create fields/columns for Post model
-SavedRecipe.init(
+SavedRecipes.init(
     {
       id: {
         type: DataTypes.INTEGER,
@@ -33,8 +33,8 @@ SavedRecipe.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'savedrecipe'
+      modelName: 'savedrecipes'
     }
   );
   
-  module.exports = SavedRecipe;
+  module.exports = SavedRecipes;
