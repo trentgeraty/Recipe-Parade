@@ -80,7 +80,7 @@ router.get('/:id', (req, res) => {
 
 // creating a recipe
 router.post('/', withAuth, (req, res) => {
-    // create 1 post
+    // create 1 recipe
     Recipe.create({ 
         title: req.body.title,
         ingredients: req.body.ingredients,
@@ -96,7 +96,7 @@ router.post('/', withAuth, (req, res) => {
 
 
 
-// update a post title
+// update a recipe title, ingredients and directions
 router.put('/:id', withAuth, (req, res) => {
     Recipe.update({
         title: req.body.title,

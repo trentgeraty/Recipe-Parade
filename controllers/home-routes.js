@@ -5,7 +5,7 @@ const router = require('express').Router();
 
 
 router.get('/', (req, res) => {
-    Post.findAll({
+    Recipe.findAll({
       attributes: [
         'id',
         'title',
@@ -60,7 +60,7 @@ router.get('/signup', (req, res) => {
 
 //rendering one recipe to the single-recipe page
 router.get('/recipe/:id', (req, res) => {
-    Post.findOne({
+    Recipe.findOne({
       where: {
         id: req.params.id
       },

@@ -8,7 +8,7 @@ async function newFormHandler(event) {
     console.log(recipeIngredients);
     console.log(recipeDirections)
   
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/recipes`, {
       method: 'POST',
       body: JSON.stringify({
         recipeTitle,
