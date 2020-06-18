@@ -1,0 +1,34 @@
+{
+  "name": "recipe-parade",
+  "version": "1.0.0",
+  "description": "recipe-parade",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izabelacloud/Recipe-Parade.git"
+  },
+  "author": "Anisha, Trent, Izabela",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/izabelacloud/Recipe-Parade/issues"
+  },
+  "homepage": "https://github.com/izabelacloud/Recipe-Parade#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^6.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.13"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.4"
+  }
+}
