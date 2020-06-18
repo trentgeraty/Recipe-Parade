@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, User, Comment, RecipeTag} = require('../../models');
+const { Recipe, User, Comment, RecipeTag, Tag } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
@@ -106,6 +106,14 @@ router.get('/:id', (req, res) => {
         {
         model: User,
         attributes: ['username']
+        },
+        {
+        model: Tag,
+        attributes: ['id', 'tag_name'],
+        // include: {
+        //     model: User,
+        //     attributes: ['username']
+        // }
         },
         // {
         // model: Comment,
