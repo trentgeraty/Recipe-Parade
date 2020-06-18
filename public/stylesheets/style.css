@@ -1,5 +1,7 @@
-.root {
-    font-size: 24px;
-    padding: 20px;
-    margin: 23px;
-}
+:root {
+    --black: #011627;
+    --white: #FDFFFC;
+    --tiffany-blue: #2EC4B6;
+    --rose-madder: #E71D36;
+    --orange-peel: #FF9F1C;
+  }
