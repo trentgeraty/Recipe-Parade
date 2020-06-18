@@ -80,4 +80,4 @@ Recipe.hasMany(SavedRecipes, {
 
 
 
-module.exports = { User, Recipe, Tag, SavedRecipes };
+module.exports = { User, Recipe, Tag, SavedRecipes, RecipeTag };

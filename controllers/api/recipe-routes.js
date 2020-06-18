@@ -50,18 +50,56 @@ router.get('/:id', (req, res) => {
                    'directions',
                    'created_at'
                 ],
-      include: [
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ['username']
+    //     },
+    //     {
+    //       model: Comment,
+    //       attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+    //       include: {
+    //         model: User,
+    //         attributes: ['username']
+    //       }
+    //     }
+    //   ]
+    include: [
         {
-          model: User,
-          attributes: ['username']
+            model: RecipeTag,
+            attributes: ['id', 'recipe_id', 'tag_id', 'created_at'],
+            // include: {
+            //   model: User,
+            //   attributes: ['username']
+            // }
         },
         {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-          include: {
+            model: Rating,
+            attributes: ['id', 'created_at'],
+            // include: {
+            //   model: User,
+            //   attributes: ['username']
+            // }
+        },
+        {
+            model: Followers,
+            attributes: ['id', 'created_at'],
+            // include: {
+            //   model: User,
+            //   attributes: ['username']
+            // }
+        },
+        {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        },
+        {
             model: User,
             attributes: ['username']
-          }
         }
       ]
     })

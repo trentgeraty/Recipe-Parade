@@ -55,20 +55,58 @@ router.get('/edit/:id', withAuth, (req, res) => {
                      'directions',
                      'created_at'
                   ],
+        // include: [
+        //   {
+        //     model: User,
+        //     attributes: ['username']
+        //   },
+        //   {
+        //     model: Comment,
+        //     attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+        //     include: {
+        //       model: User,
+        //       attributes: ['username']
+        //     }
+        //   }
+        // ]
         include: [
-          {
-            model: User,
-            attributes: ['username']
-          },
-          {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-            include: {
-              model: User,
-              attributes: ['username']
+            {
+                model: RecipeTag,
+                attributes: ['id', 'recipe_id', 'tag_id', 'created_at'],
+                // include: {
+                //   model: User,
+                //   attributes: ['username']
+                // }
+            },
+            {
+                model: Rating,
+                attributes: ['id', 'created_at'],
+                // include: {
+                //   model: User,
+                //   attributes: ['username']
+                // }
+            },
+            {
+                model: Followers,
+                attributes: ['id', 'created_at'],
+                // include: {
+                //   model: User,
+                //   attributes: ['username']
+                // }
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
             }
-          }
-        ]
+          ]
       })
         .then(dbRecipeData => {
           if (!dbRecipeData) {

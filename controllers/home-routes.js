@@ -1,6 +1,6 @@
 // will contain all of the user-facing routes, such as the homepage and login page
 const sequelize = require('../config/connection');
-const { Recipe, User, Comment } = require('../models');
+const { Recipe, User, Comment, RecipeTag, Rating, Followers } = require('../models');
 const router = require('express').Router();
 
 
@@ -15,16 +15,40 @@ router.get('/', (req, res) => {
       ],
       include: [
         {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
+            model: RecipeTag,
+            attributes: ['id', 'recipe_id', 'tag_id', 'created_at'],
+            // include: {
+            //   model: User,
+            //   attributes: ['username']
+            // }
         },
         {
-          model: User,
-          attributes: ['username']
+            model: Rating,
+            attributes: ['id', 'created_at'],
+            // include: {
+            //   model: User,
+            //   attributes: ['username']
+            // }
+        },
+        {
+            model: Followers,
+            attributes: ['id', 'created_at'],
+            // include: {
+            //   model: User,
+            //   attributes: ['username']
+            // }
+        },
+        {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        },
+        {
+            model: User,
+            attributes: ['username']
         }
       ]
     })
