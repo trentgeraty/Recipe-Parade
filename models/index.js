@@ -1,6 +1,7 @@
 const User = require('./User');
 const Recipe = require('./Recipe');
 const Tag = require('./Tags');
+const RecipeTag = require('./RecipeTag');
 const SavedRecipes = require('./SavedRecipes');
 // const Comment = require('./Comment');
 
