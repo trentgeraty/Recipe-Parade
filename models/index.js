@@ -15,20 +15,7 @@ Recipe.belongsTo(User, {
     onDelete: "cascade"
 });
 
-// // Recipes belongToMany Tags (through RecipeTag)
-// Recipe.belongsToMany(Tag, {
-//     through: RecipeTag,
-//     as: 'tagged_recipes',
-//     foreignKey: 'recipe_id'
-// });
-  
 
-// // Tags belongToMany Recipes (through RecipeTag)
-// Tag.belongsToMany(Recipe, {
-//     through: RecipeTag,
-//     as: 'tagged_recipes',
-//     foreignKey: 'tag_id'
-// });
 
 
 // User.hasMany(Tag, {
@@ -40,21 +27,37 @@ Recipe.belongsTo(User, {
 //     foreignKey: 'recipe_id'
 // });
 
+// SavedRecipes.hasMany(Comment, {
+//     foreignKey: 'recipe_id',
+//     // onDelete: "cascade"
+// })
+
+// SavedRecipes.hasMany(Tag, {
+//     foreignKey: 'recipe_id',
+//     // onDelete: "cascade"
+// })
+
 
 SavedRecipes.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: "cascade"
 });
 
 SavedRecipes.belongsTo(Recipe, {
-    foreignKey: 'recipe_id'
+    foreignKey: 'recipe_id',
+    onDelete: "cascade"
 });
 
+
+
 User.hasMany(SavedRecipes, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: "cascade"
 });
 
 Recipe.hasMany(SavedRecipes, {
-    foreignKey: 'recipe_id'
+    foreignKey: 'recipe_id',
+    onDelete: "cascade"
 });
 
 Comment.belongsTo(User, {
@@ -77,6 +80,8 @@ Recipe.hasMany(Comment, {
     onDelete: "cascade"
 })
 
+
+
 Tag.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: "cascade"
@@ -97,6 +102,36 @@ Recipe.hasMany(Tag, {
     onDelete: "cascade"
 })
 
+
+
+// Comment.belongsToMany(SavedRecipes, {
+//     through: Recipe,
+//     as: "saved-recipe-comments",
+//     foreignKey: 'recipe_id',
+//     onDelete: "cascade"
+// })
+
+// Tag.hasMany(SavedRecipes, {
+//     through: Recipe,
+//     as: "saved-recipe-tags",
+//     foreignKey: 'recipe_id',
+//     onDelete: "cascade"
+// })
+
+// // Recipes belongToMany Tags (through RecipeTag)
+// Recipe.belongsToMany(Tag, {
+//     through: RecipeTag,
+//     as: 'tagged_recipes',
+//     foreignKey: 'recipe_id'
+// });
+  
+
+// // Tags belongToMany Recipes (through RecipeTag)
+// Tag.belongsToMany(Recipe, {
+//     through: RecipeTag,
+//     as: 'tagged_recipes',
+//     foreignKey: 'tag_id'
+// });
 
 
 module.exports = { User, Recipe, Tag, SavedRecipes, Comment };

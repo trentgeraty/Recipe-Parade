@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Recipe, User, Comment, Tag, Rating, Followers } = require('../models');
+const { Recipe, User, Comment, Tag, Rating, Followers, SavedRecipes } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET all saved
@@ -21,24 +21,12 @@ router.get('/', (req, res) => {
             attributes: ['username']
             },
             {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            },
-            {
-            model: Tag,
-            attributes: ['id', 'tag_name', 'recipe_id'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
+            model: Recipe,
+            attributes: ['id', 'title', 'ingredients', 'directions']
             }
         ]
     })
-        .then(dbRecipeData => res.json(dbRecipeData.reverse()))
+        .then(dbSavedRecipeData => res.json(dbSavedRecipeData.reverse()))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -60,33 +48,21 @@ router.get('/:id', (req, res) => {
         ],
       include: [
         {
-          model: User,
-          attributes: ['username']
-        },
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
-          include: {
             model: User,
             attributes: ['username']
-          }
         },
         {
-            model: Tag,
-            attributes: ['id', 'tag_name', 'recipe_id'],
-                include: {
-                    model: User,
-                    attributes: ['username']
-                }
-            }
+            model: Recipe,
+            attributes: ['id', 'title', 'ingredients', 'directions']
+        }
       ]
     })
-      .then(dbRecipeData => {
-        if (!dbRecipeData) {
+      .then(dbSavedRecipeData => {
+        if (!dbSavedRecipeData) {
           res.status(404).json({ message: 'No saved recipe found with this id' });
           return;
         }
-        res.json(dbRecipeData);
+        res.json(dbSavedRecipeData);
       })
       .catch(err => {
         console.log(err);
@@ -101,7 +77,7 @@ router.post('/', withAuth, (req, res) => {
         recipe_id: req.body.recipe_id,
         user_id: req.session.user_id
     })
-        .then(dbRecipeData => res.json(dbRecipeData))
+        .then(dbSavedRecipeData => res.json(dbSavedRecipeData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err); 
@@ -110,28 +86,7 @@ router.post('/', withAuth, (req, res) => {
 
 
 
-// update a recipe title, ingredients and directions
-router.put('/:id', withAuth, (req, res) => {
-    SavedRecipes.update({
-        recipe_id: req.body.recipe_id,
-        user_id: req.body.user_id
-      },
-      {
-        where: {
-          id: req.params.id
-        }
-    }).then(dbRecipeData => {
-        if (!dbRecipeData) {
-            res.status(404).json({ message: 'No saved recipe found with this id' });
-            return;
-        }
-        res.json(dbRecipeData);
-    })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+
 
 
 
@@ -141,12 +96,12 @@ router.delete('/:id', withAuth, (req, res) => {
         where: {
             id: req.params.id 
         }
-    }).then(dbRecipeData => {
-        if (!dbRecipeData) {
+    }).then(dbSavedRecipeData => {
+        if (!dbSavedRecipeData) {
             res.status(404).json({ message: 'No saved recipe found with this id' });
             return;
         }
-        res.json(dbRecipeData);
+        res.json(dbSavedRecipeData);
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
