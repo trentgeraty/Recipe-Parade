@@ -44,3 +44,10 @@ Recipe.init(
   
   module.exports = Recipe;
   //test commit 
+
+  //header: Content-Type: multipart/form-data;
+  //append user who upload it
+  //form.append(myimages, File)
+  //req.file - place where it was uploaded
+  //original file name 
+  //new path
