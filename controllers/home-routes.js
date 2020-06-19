@@ -15,41 +15,25 @@ router.get('/', (req, res) => {
       ],
       include: [
         {
-            model: Tag,
-            attributes: ['id', 'recipe_id', 'tag_id', 'created_at'],
-            // include: {
-            //   model: User,
-            //   attributes: ['username']
-            // }
+          model: User,
+          attributes: ['username']
         },
         {
-            model: Rating,
-            attributes: ['id', 'created_at'],
-            // include: {
-            //   model: User,
-            //   attributes: ['username']
-            // }
-        },
-        {
-            model: Followers,
-            attributes: ['id', 'created_at'],
-            // include: {
-            //   model: User,
-            //   attributes: ['username']
-            // }
-        },
-        {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-            include: {
-                model: User,
-                attributes: ['username']
-            }
-        },
-        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+          include: {
             model: User,
             attributes: ['username']
-        }
+          }
+        },
+        {
+            model: Tag,
+            attributes: ['id', 'tag_name', 'recipe_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
       ]
     })
       .then(dbRecipeData => {
@@ -97,17 +81,25 @@ router.get('/recipe/:id', (req, res) => {
       ],
       include: [
         {
+          model: User,
+          attributes: ['username']
+        },
+        {
           model: Comment,
-          attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
           include: {
             model: User,
             attributes: ['username']
           }
         },
         {
-          model: User,
-          attributes: ['username']
-        }
+            model: Tag,
+            attributes: ['id', 'tag_name', 'recipe_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
       ]
     })
       .then(dbRecipeData => {

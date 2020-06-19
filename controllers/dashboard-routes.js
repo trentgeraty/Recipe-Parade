@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const {Recipe, User, Comment} = require('../models');
+const {Recipe, User, Comment, Tag} = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -19,17 +19,25 @@ router.get('/', withAuth, (req, res) => {
       ],
       include: [
         {
+          model: User,
+          attributes: ['username']
+        },
+        {
           model: Comment,
-          attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
           include: {
             model: User,
             attributes: ['username']
           }
         },
         {
-          model: User,
-          attributes: ['username']
-        }
+            model: Tag,
+            attributes: ['id', 'tag_name', 'recipe_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
       ]
     })
       .then(dbRecipeData => {
@@ -55,58 +63,28 @@ router.get('/edit/:id', withAuth, (req, res) => {
                      'directions',
                      'created_at'
                   ],
-        // include: [
-        //   {
-        //     model: User,
-        //     attributes: ['username']
-        //   },
-        //   {
-        //     model: Comment,
-        //     attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-        //     include: {
-        //       model: User,
-        //       attributes: ['username']
-        //     }
-        //   }
-        // ]
         include: [
-            {
-                model: RecipeTag,
-                attributes: ['id', 'recipe_id', 'tag_id', 'created_at'],
-                // include: {
-                //   model: User,
-                //   attributes: ['username']
-                // }
-            },
-            {
-                model: Rating,
-                attributes: ['id', 'created_at'],
-                // include: {
-                //   model: User,
-                //   attributes: ['username']
-                // }
-            },
-            {
-                model: Followers,
-                attributes: ['id', 'created_at'],
-                // include: {
-                //   model: User,
-                //   attributes: ['username']
-                // }
-            },
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
+        {
+            model: User,
+            attributes: ['username']
+        },
+        {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+            include: {
+            model: User,
+            attributes: ['username']
+            }
+        },
+        {
+            model: Tag,
+            attributes: ['id', 'tag_name', 'recipe_id'],
                 include: {
                     model: User,
                     attributes: ['username']
                 }
-            },
-            {
-                model: User,
-                attributes: ['username']
             }
-          ]
+        ]
       })
         .then(dbRecipeData => {
           if (!dbRecipeData) {
