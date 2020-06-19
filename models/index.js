@@ -3,6 +3,7 @@ const Recipe = require('./Recipe');
 const Tag = require('./Tags');
 const SavedRecipes = require('./SavedRecipes');
 const Comment = require('./Comment');
+const Rating = require('./Rating');
 
 //create associations
 User.hasMany(Recipe, {
@@ -103,6 +104,27 @@ Recipe.hasMany(Tag, {
 })
 
 
+Rating.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: "cascade"
+});
+
+Rating.belongsTo(Recipe, {
+    foreignKey: 'recipe_id',
+    onDelete: "cascade"
+});
+
+// User.hasMany(Rating, {
+//     foreignKey: 'user_id',
+//     onDelete: "cascade"
+// });
+
+Recipe.hasMany(Rating, {
+    foreignKey: 'recipe_id',
+    onDelete: "cascade"
+})
+
+
 
 // Comment.belongsToMany(SavedRecipes, {
 //     through: Recipe,
@@ -134,4 +156,4 @@ Recipe.hasMany(Tag, {
 // });
 
 
-module.exports = { User, Recipe, Tag, SavedRecipes, Comment };
+module.exports = { User, Recipe, Tag, SavedRecipes, Comment, Rating };
