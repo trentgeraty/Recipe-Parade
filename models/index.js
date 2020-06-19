@@ -16,30 +16,30 @@ Recipe.belongsTo(User, {
     onDelete: "cascade"
 });
 
-// Recipes belongToMany Tags (through RecipeTag)
-Recipe.belongsToMany(Tag, {
-    through: RecipeTag,
-    as: 'tagged_recipes',
-    foreignKey: 'recipe_id'
-});
+// // Recipes belongToMany Tags (through RecipeTag)
+// Recipe.belongsToMany(Tag, {
+//     through: RecipeTag,
+//     as: 'tagged_recipes',
+//     foreignKey: 'recipe_id'
+// });
   
 
-// Tags belongToMany Recipes (through RecipeTag)
-Tag.belongsToMany(Recipe, {
-    through: RecipeTag,
-    as: 'tagged_recipes',
-    foreignKey: 'tag_id'
-});
+// // Tags belongToMany Recipes (through RecipeTag)
+// Tag.belongsToMany(Recipe, {
+//     through: RecipeTag,
+//     as: 'tagged_recipes',
+//     foreignKey: 'tag_id'
+// });
 
 
-User.hasMany(Tag, {
-    foreignKey: 'user_id'
-});
+// User.hasMany(Tag, {
+//     foreignKey: 'user_id'
+// });
 
 
-Recipe.hasMany(Tag, {
-    foreignKey: 'recipe_id'
-});
+// Recipe.hasMany(Tag, {
+//     foreignKey: 'recipe_id'
+// });
 
 
 SavedRecipes.belongsTo(User, {
@@ -74,6 +74,26 @@ User.hasMany(Comment, {
 });
 
 Recipe.hasMany(Comment, {
+    foreignKey: 'recipe_id',
+    onDelete: "cascade"
+})
+
+Tag.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: "cascade"
+});
+
+Tag.belongsTo(Recipe, {
+    foreignKey: 'recipe_id',
+    onDelete: "cascade"
+});
+
+User.hasMany(Tag, {
+    foreignKey: 'user_id',
+    onDelete: "cascade"
+});
+
+Recipe.hasMany(Tag, {
     foreignKey: 'recipe_id',
     onDelete: "cascade"
 })

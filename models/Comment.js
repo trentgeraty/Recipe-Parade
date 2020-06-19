@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
 class Comment extends Model {}
-// console.log('hello')
+
 Comment.init(
     {
         id: {
@@ -22,10 +22,6 @@ Comment.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        created_at: {
-            type: DataTypes.DATE,
             allowNull: false
         }
     },
