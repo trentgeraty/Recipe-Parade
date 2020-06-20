@@ -115,10 +115,10 @@ Rating.belongsTo(Recipe, {
     onDelete: "cascade"
 });
 
-// User.hasMany(Rating, {
-//     foreignKey: 'user_id',
-//     onDelete: "cascade"
-// });
+User.hasMany(Rating, {
+    foreignKey: 'user_id',
+    onDelete: "cascade"
+});
 
 Recipe.hasMany(Rating, {
     foreignKey: 'recipe_id',
