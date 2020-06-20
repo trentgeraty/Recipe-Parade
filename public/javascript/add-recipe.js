@@ -1,9 +1,9 @@
 async function newFormHandler(event) {
     event.preventDefault();
   
-    const recipeTitle = document.querySelector('input[name="recipe-title"]').value.trim();
-    const recipeIngredients = document.querySelector('input[name="recipe-ingredients"]').value.trim();
-    const recipeDirections = document.querySelector('input[name="recipe-directions"]').value.trim();
+    const recipeTitle = document.querySelector('input[name="title"]').value.trim();
+    const recipeIngredients = document.querySelector('input[name="ingredients"]').value.trim();
+    const recipeDirections = document.querySelector('input[name="directions"]').value.trim();
     console.log(recipeTitle);
     console.log(recipeIngredients);
     console.log(recipeDirections)
