@@ -1,19 +1,21 @@
+// const { in } = require("sequelize/types/lib/operators");
+
 async function newFormHandler(event) {
     event.preventDefault();
   
-    const recipeTitle = document.querySelector('input[name="title"]').value.trim();
-    const recipeIngredients = document.querySelector('input[name="ingredients"]').value.trim();
-    const recipeDirections = document.querySelector('input[name="directions"]').value.trim();
-    console.log(recipeTitle);
-    console.log(recipeIngredients);
-    console.log(recipeDirections)
+    const title = document.querySelector('input[name="title"]').value.trim();
+    const ingredients = document.querySelector('input[name="ingredients"]').value.trim();
+    const directions = document.querySelector('input[name="directions"]').value.trim();
+    console.log(title);
+    console.log(ingredients);
+    console.log(directions);
   
     const response = await fetch(`/api/recipes`, {
       method: 'POST',
       body: JSON.stringify({
-        recipeTitle,
-        recipeIngredients,
-        recipeDirections
+        title,
+        ingredients,
+        directions
       }),
       headers: {
         'Content-Type': 'application/json'
