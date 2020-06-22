@@ -11,6 +11,10 @@
 <body>
   <div class="wrapper">
       <header class="hero">
+          <div id="MD Image" style="display: none">
+              <img class="Main Body Image" src="https://www.pexels.com/photo/anise-aroma-art-bazaar-277253/">
+          </div>
+
           <div>
             <nav class"nav">
                     <a class="link" href="/">home</a>
@@ -27,9 +31,9 @@
       </header>
 
     <main>
-      {{!-- {{{ body }}} --}}
-          <script id="grid-template" type="text/x-handlebars-template">
-      {{#rows}}
+      {{{ body }}}
+
+      {{!-- {{#rows}}
         <div class="row">
           {{#cells}}
             <div class="cell">
@@ -37,12 +41,10 @@
             </div>
           {{/cells}}
         </div>
-      {{/rows}}
+      {{/rows}} --}}
     </script>
 
-      <div id="MD Image" style="display: none">
-    <img class="Main Body Image" src="{{https://www.pexels.com/photo/anise-aroma-art-bazaar-277253/}}">
-    </div>
+
 
     </main>
   </div>
@@ -50,7 +52,7 @@
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
-
+    <script id="grid-template" type="text/x-handlebars-template"></script>
 </body>
 
-</html>
+</html> 
