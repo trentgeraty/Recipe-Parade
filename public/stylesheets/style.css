@@ -33,3 +33,10 @@
     font-weight: 400;
     text-align: center;
   }
+
+footer {
+    padding: 2px 5px;
+    font-size: medium;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+  }
