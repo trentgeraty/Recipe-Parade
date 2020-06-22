@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, User, Comment, RecipeTag, Tag } = require('../../models');
+const { Recipe, User, Comment, Tag, Rating, Followers } = require('../../models');
 const sequelize = require('../../config/connection');
 const withAuth = require('../../utils/auth');
 
@@ -20,14 +20,38 @@ router.get('/', (req, res) => {
             model: User,
             attributes: ['username']
             },
-            // {
-            // model: Comment,
-            // attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-            //     include: {
-            //         model: User,
-            //         attributes: ['username']
-            //     }
-            // }
+            {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+            model: Tag,
+            attributes: ['id', 'tag_name', 'recipe_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+              model: Rating,
+              attributes: ['id', 'rating', 'recipe_id'],
+                  include: {
+                      model: User,
+                      attributes: ['username']
+                  }
+              },
+              {
+                model: Followers,
+                attributes: ['id', 'user_id', 'recipe_id'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+              }
         ]
     })
         .then(dbRecipeData => res.json(dbRecipeData.reverse()))
@@ -50,80 +74,44 @@ router.get('/:id', (req, res) => {
                    'directions',
                    'created_at'
                 ],
-    //   include: [
-    //     {
-    //       model: User,
-    //       attributes: ['username']
-    //     },
-    //     {
-    //       model: Comment,
-    //       attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-    //       include: {
-    //         model: User,
-    //         attributes: ['username']
-    //       }
-    //     }
-    //   ]
-    // include: [
-        // {
-        //     model: RecipeTag,
-        //     attributes: ['id', 'recipe_id', 'tag_id', 'created_at'],
-        //     include: {
-        //       model: User,
-        //       attributes: ['username']
-        //     }
-        // },
-        // {
-        //     model: Rating,
-        //     attributes: ['id', 'created_at'],
-        //     // include: {
-        //     //   model: User,
-        //     //   attributes: ['username']
-        //     // }
-        // },
-        // {
-        //     model: Followers,
-        //     attributes: ['id', 'created_at'],
-        //     // include: {
-        //     //   model: User,
-        //     //   attributes: ['username']
-        //     // }
-        // },
-        // {
-        //     model: Comment,
-        //     attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-        //     include: {
-        //         model: User,
-        //         attributes: ['username']
-        //     }
-        // },
-    //     {
-    //         model: User,
-    //         attributes: ['username']
-    //     }
-    //   ]
-    include: [
+      include: [
         {
-        model: User,
-        attributes: ['username']
-        },
-        {
-        model: Tag,
-        attributes: ['id', 'tag_name'],
-        // include: {
-        //     model: User,
-        //     attributes: ['username']
-        // }
-        },
-        // {
-        // model: Comment,
-        // attributes: ['id', 'comment_text', 'recipe_id', 'user_id', 'created_at'],
-        //     include: {
-        //         model: User,
-        //         attributes: ['username']
-        //     }
-        // }
-    ]
+          model: User,
+          attributes: ['username']
+          },
+          {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+              include: {
+                  model: User,
+                  attributes: ['username']
+              }
+          },
+          {
+          model: Tag,
+          attributes: ['id', 'tag_name', 'recipe_id'],
+              include: {
+                  model: User,
+                  attributes: ['username']
+              }
+          },
+          {
+            model: Rating,
+            attributes: ['id', 'rating', 'recipe_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+              model: Followers,
+              attributes: ['id', 'user_id', 'recipe_id'],
+                  include: {
+                      model: User,
+                      attributes: ['username']
+                  }
+            }
+      ]
     })
       .then(dbRecipeData => {
         if (!dbRecipeData) {
@@ -137,6 +125,8 @@ router.get('/:id', (req, res) => {
         res.status(500).json(err);
       });
   });
+
+
 
 // creating a recipe
 router.post('/', withAuth, (req, res) => {
