@@ -27,7 +27,18 @@
       </header>
 
     <main>
-      {{{ body }}}
+      {{!-- {{{ body }}} --}}
+          <script id="grid-template" type="text/x-handlebars-template">
+      {{#rows}}
+        <div class="row">
+          {{#cells}}
+            <div class="cell">
+              {{{ body }}}
+            </div>
+          {{/cells}}
+        </div>
+      {{/rows}}
+    </script>
 
       <div id="MD Image" style="display: none">
     <img class="Main Body Image" src="{{https://www.pexels.com/photo/anise-aroma-art-bazaar-277253/}}">
