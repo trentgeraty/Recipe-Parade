@@ -6,3 +6,30 @@
     --orange-peel: #FF9F1C;
     color: aliceblue;
   }
+
+  .dashboard {
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+  }
+
+  .logout {
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+  }
+
+  .login {
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+  }
+
+  h1 {
+    font-size: large;
+    font-weight: 400;
+    text-align: center;
+  }
