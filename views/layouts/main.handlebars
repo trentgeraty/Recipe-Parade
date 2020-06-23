@@ -5,20 +5,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe Parade</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/public/stylesheets/style.css">
 </head>
 
 <body>
   <div class="wrapper">
       <header class="hero">
+          <div id="MD Image" style="display: none">
+              <img class="Main Body Image" src="https://www.pexels.com/photo/anise-aroma-art-bazaar-277253/">
+          </div>
+
           <div>
             <nav class"nav">
-                    <a class="link" href="/">home</a>
-                    <a class="link" href="/dashboard">dashboard</a>
+                    <a class="link" href="/">Home</a>
+
                     {{#if loggedIn}}
-                    <a class="link" href="/" id="logout">logout</a>
+
+                    <a class="link" href="/dashboard">My Recipes</a>
+                    <a class="link" href="/savedrecipes">Favorite Recipes</a>
+                    <a class="link" href="/" id="logout">Logout</a>
                     {{else}}
-                    <a class="link" href="/login">login</a>
+                    <a class="link" href="/login">Login</a>
                     {{/if}}
                 </nav>          
           </div>
@@ -28,13 +35,27 @@
 
     <main>
       {{{ body }}}
+
+      {{!-- {{#rows}}
+        <div class="row">
+          {{#cells}}
+            <div class="cell">
+              {{{ body }}}
+            </div>
+          {{/cells}}
+        </div>
+      {{/rows}} --}}
+    </script>
+
+
+
     </main>
   </div>
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
-
+    <script id="grid-template" type="text/x-handlebars-template"></script>
 </body>
 
-</html>
+</html> 

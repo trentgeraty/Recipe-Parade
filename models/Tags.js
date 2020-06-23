@@ -15,7 +15,11 @@ Tag.init(
     },
     tag_name: {
       type: DataTypes.STRING
-    }
+    },
+    recipe_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
   },
   {
     sequelize,

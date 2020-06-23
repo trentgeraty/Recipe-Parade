@@ -1,24 +1,24 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Rating } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//route to get all the comments
+//route to get all the ratings
 router.get('/', (req, res) => {
-    Comment.findAll({})
-        .then(dbCommentData => res.json(dbCommentData))
+    Rating.findAll({})
+        .then(dbRatingData => res.json(dbRatingData))
         .catch(err => {
             console.log(err); 
             res.status(500).json(err); 
         })
 });
 
-//route to get 1 comment
+//route to get 1 rating
 router.get('/:id', (req, res) => {
-    Comment.findAll({
+    Rating.findAll({
             where: { 
                 id: req.params.id}
         })
-        .then(dbCommentData => res.json(dbCommentData))
+        .then(dbRatingData => res.json(dbRatingData))
         .catch(err => {
             console.log(err); 
             res.status(500).json(err); 
@@ -26,17 +26,17 @@ router.get('/:id', (req, res) => {
 });
 
 
-//route to create a comment
+//route to create a rating
 router.post('/', withAuth, (req, res) => {
     // check session
     if (req.session) {
-    Comment.create({
-        comment_text: req.body.comment_text, 
+    Rating.create({
+        rating: req.body.rating, 
         recipe_id: req.body.recipe_id,
         // use the id from the session
         user_id: req.session.user_id,
     })
-        .then(dbCommentData => res.json(dbCommentData))
+        .then(dbRatingData => res.json(dbRatingData))
         .catch(err => {
             console.log(err);
             res.status(400).json(err);
@@ -45,21 +45,21 @@ router.post('/', withAuth, (req, res) => {
 });
 
 
-//route to update a comment
+//route to update a rating
 router.put('/:id', withAuth, (req, res) => {
-    Comment.update({
-        comment_text: req.body.comment_text
+    Rating.update({
+        rating: req.body.rating
       },
       {
         where: {
           id: req.params.id
         }
-    }).then(dbCommentData => {
-        if (!dbCommentData) {
-            res.status(404).json({ message: 'No comment found with this id' });
+    }).then(dbRatingData => {
+        if (!dbRatingData) {
+            res.status(404).json({ message: 'No rating found with this id' });
             return;
         }
-        res.json(dbCommentData);
+        res.json(dbRatingData);
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -67,18 +67,18 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 
-//route to delete a comment
+//route to delete a rating
 router.delete('/:id', withAuth, (req, res) => {
-    Comment.destroy({
+    Rating.destroy({
         where: {
             id: req.params.id 
         }
-    }).then(dbCommentData => {
-        if (!dbCommentData) {
-            res.status(404).json({ message: 'No comment found with this id' });
+    }).then(dbRatingData => {
+        if (!dbRatingData) {
+            res.status(404).json({ message: 'No rating found with this id' });
             return;
         }
-        res.json(dbCommentData);
+        res.json(dbRatingData);
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);

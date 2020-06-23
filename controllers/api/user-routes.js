@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Recipe, Comment } = require('../../models');
+const { Recipe, User, Comment, Tag, Rating, SavedRecipes } = require('../../models');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -26,26 +26,44 @@ router.get('/:id', (req, res) => {
         include: [
           {
             model: Recipe,
-            attributes: [
-                'id', 
-                'title', 
-                'ingredients', 
-                'directions',
-                'created_at']
-          },
-          // include the Comment model here:
-        //   {
-        //     model: Comment,
-        //     attributes: ['id', 'comment_text', 'created_at'],
-        //     include: {
-        //       model: Recipe,
-        //       attributes: ['title']
-        //     }
-        //   },
-          {
-            model: Recipe,
             attributes: ['title', 'ingredients', 'directions', 'created_at'],
-          }
+          },
+        //   {
+        //     model: User,
+        //     attributes: ['username']
+        //     },
+            {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'recipe_id', 'user_id'],
+                // include: {
+                //     model: User,
+                //     attributes: ['username']
+                // }
+            },
+            {
+            model: Tag,
+            attributes: ['id', 'tag_name', 'recipe_id'],
+                // include: {
+                //     model: User,
+                //     attributes: ['username']
+                // }
+            },
+            {
+              model: Rating,
+              attributes: ['id', 'rating', 'recipe_id'],
+                //   include: {
+                //       model: User,
+                //       attributes: ['username']
+                //   }
+              },
+            {
+            model: SavedRecipes,
+            attributes: ['id', 'user_id', 'recipe_id'],
+                //   include: {
+                //       model: User,
+                //       attributes: ['username']
+                //   }
+            }
         ]
       })
       .then(dbUserData => {

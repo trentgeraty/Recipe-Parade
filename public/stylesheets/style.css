@@ -4,4 +4,39 @@
     --tiffany-blue: #2EC4B6;
     --rose-madder: #E71D36;
     --orange-peel: #FF9F1C;
+    color: aliceblue;
+  }
+
+  .dashboard {
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+  }
+
+  .logout {
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+  }
+
+  .login {
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
+  }
+
+  h1 {
+    font-size: large;
+    font-weight: 400;
+    text-align: center;
+  }
+
+footer {
+    padding: 2px 5px;
+    font-size: medium;
+    border-radius: 3px;
+    border: 1px solid #e1e4e8;
   }
