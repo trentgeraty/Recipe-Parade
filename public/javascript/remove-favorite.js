@@ -60,7 +60,7 @@
       const response = await fetch(`/api/savedrecipes/${id}`, {
         method: 'DELETE',
         body: JSON.stringify({
-        //   recipe_id: id
+        recipe_id: id
         // id: id
         }),
         headers: {
