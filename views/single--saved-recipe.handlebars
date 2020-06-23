@@ -1,8 +1,9 @@
 
 {{> recipe-info recipe}}
+test recipe 
 
 {{#if loggedIn}}
-<div class="card">
+{{!-- <div class="card">
     <h3 class="card-header"></h3>
     <form class="card-body comment-form" id="comment-form">
 
@@ -13,24 +14,21 @@
 
     </form>
 
-</div>
+</div> --}}
 
 <div>
-        <h3 class="card-header"></h3>
-        <form class="card-body favorite-form" id="favorite-form">
-        <button type="submit" class="btn" id="favorite-btn">Save as Favorite</button>
+    <h3 class="card-header"></h3>
+    <form class="card-body remove-favorite-form" id="remove-favorite-form">
+        {{!-- <button type="submit" class="btn" id="favorite-btn">Save as Favorite</button> --}}
+        <button type="button" class="btn" id="remove-favorite-btn">Remove from Favorites</button>
 
     </form>
 
 </div>
 {{/if}}
 
-
 {{> comments recipe.comments}}
 
 {{#if loggedIn}}
-<script src="/javascript/comment.js"></script>
-<script src="/javascript/save-favorite.js"></script>
 <script src="/javascript/remove-favorite.js"></script>
-
 {{/if}}
