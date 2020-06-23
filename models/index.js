@@ -18,9 +18,6 @@ Recipe.belongsTo(User, {
     onDelete: "cascade"
 });
 
-
-
-
 // User.hasMany(Tag, {
 //     foreignKey: 'user_id'
 // });
@@ -83,8 +80,6 @@ Recipe.hasMany(Comment, {
     onDelete: "cascade"
 })
 
-
-
 Tag.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: "cascade"
@@ -104,10 +99,6 @@ Recipe.hasMany(Tag, {
     foreignKey: 'recipe_id',
     onDelete: "cascade"
 })
-
-
-
-
 
 Rating.belongsTo(User, {
     foreignKey: 'user_id',

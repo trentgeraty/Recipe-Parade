@@ -6,7 +6,7 @@ const withAuth = require('../utils/auth');
 router.get('/', (req, res) => {
     Followers.findAll({
         attributes: [
-                    'id', 
+                    'id',
                     'recipe_id',
                     'user_id',
                     'created_at'
@@ -36,7 +36,7 @@ router.get('/:id', (req, res) => {
         id: req.params.id
       },
       attributes: [
-            'id', 
+            'id',
             'recipe_id',
             'user_id',
             'created_at'
@@ -66,21 +66,21 @@ router.get('/:id', (req, res) => {
   });
 
 router.post('/', withAuth, (req, res) => {
-    Followers.create({ 
+    Followers.create({
         recipe_id: req.body.recipe_id,
-        user_id: req.session.user_id
+        id: req.session.user_id
     })
     .then(dbFollowerData => res.json(dbFollowerData))
     .catch(err => {
         console.log(err);
-        res.status(500).json(err); 
+        res.status(500).json(err);
     });
 });
 
 router.delete('/:id', withAuth, (req, res) => {
     Followers.destroy({
         where: {
-            id: req.params.id 
+            id: req.params.id
         }
     }).then(dbFollowerData => {
         if (!dbFollowerData) {
