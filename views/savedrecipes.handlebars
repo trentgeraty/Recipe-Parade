@@ -1,30 +1,22 @@
 
 {{#if recipes.length}}
 <section>
-  <h2>Favorite Recipes</h2>
-    {{#each this }}
-
-      <div>test data </div>
-    {{!-- {{this}} --}}
-   {{> dashboard-recipeinfo recipe}}
-
+  <h2>My Saved Recipes</h2>
+    {{!-- {{#each recipes as |recipe|}}
+      {{> savedrecipes-recipeinfo recipe}}
+    {{/each}} --}}
+    {{#each recipes as |recipe|}}
+        {{!-- {{this.recipe_id}}
+        {{this.user_id}}
+        {{this.recipe.title}}
+        {{this.recipe.description}}
+        {{this.recipe.directions}} --}}
+        {{> savedrecipes-recipeinfo recipe}}
     {{/each}}
-    
 
 </section>
-
 {{/if}}
 
+<button type="button" class="remove-favorite-btn btn">Remove from Favorites</button>
 
-
-{{!-- <article class="recipe">
-
-    {{#each recipes as |recipe| }}
-        {{> recipe-info recipe}}
-    {{/each}}
-
-</article> --}}
-
-{{!-- <button type="submit" class="btn">Remove from Favorites</button> --}}
-
-{{!-- <script src="/javascript/add-recipe.js"></script> --}}
+<script src="/javascript/remove-favorite.js"></script>

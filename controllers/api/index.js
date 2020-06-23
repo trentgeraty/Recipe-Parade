@@ -6,10 +6,12 @@ const commentRoutes = require('./comment-routes');
 const tagRoutes = require('./tag-routes');
 const ratingRoutes = require('./rating-routes');
 
+
 router.use('/users', userRoutes);
 router.use('/recipes', recipeRoutes);
 router.use('/comments', commentRoutes);
 router.use('/tags', tagRoutes);
 router.use('/ratings', ratingRoutes);
+
 
 module.exports = router;

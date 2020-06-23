@@ -10,8 +10,17 @@
         <input id="comment" name="comment-body" class="form-input" />
 
         <button type="submit" class="btn">Submit</button>
-        <button id="save-as-favorite" type="submit" class="btn">Save as Favorite</button>
+
     </form>
+
+</div>
+<div>
+        <h3 class="card-header"></h3>
+        <form class="card-body favorite-form" id="favorite-form">
+        <button type="submit" class="btn" id="favorite-btn">Save as Favorite</button>
+
+    </form>
+
 </div>
 {{/if}}
 
@@ -21,4 +30,5 @@
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/save-favorite.js"></script>
+
 {{/if}}
