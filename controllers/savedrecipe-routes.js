@@ -75,17 +75,19 @@ router.get('/:id', (req, res) => {
         }
       ]
     })
-      .then(dbSavedRecipeData => {
-        if (!dbSavedRecipeData) {
-          res.status(404).json({ message: 'No saved recipe found with this id' });
-          return;
-        }
-        res.json(dbSavedRecipeData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
+    .then(dbSavedRecipeData => {
+      if (!dbSavedRecipeData) {
+        res.status(404).json({ message: 'No saved recipe found with this id' });
+        return;
+      }
+        // serialize data before passing to template
+        const recipe = dbSavedRecipeData.get({ plain: true });
+        res.render('single-saved-recipe', {recipe, loggedIn: true});
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   });
 
 // creating a recipe
@@ -96,7 +98,7 @@ router.post('/', withAuth, (req, res) => {
         user_id: req.session.user_id
     })
         .then(dbSavedRecipeData => {
-          console.log("here will be the dbsavedrecipedata", dbSavedRecipeData)
+          // console.log("here will be the dbsavedrecipedata", dbSavedRecipeData)
           res.json(dbSavedRecipeData)
         })
         .catch(err => {

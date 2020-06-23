@@ -1,0 +1,13 @@
+
+{{> single-saved-recipe-info recipe}}
+
+{{#if loggedIn}}
+<div>
+    <h3 class="card-header"></h3>
+    <form class="card-body remove-favorite-form" id="remove-favorite-form">
+        <button type="submit" class="btn" id="remove-favorite-btn">Remove from Favorites</button>
+    </form>
+</div>
+
+<script src="/javascript/remove-favorite.js"></script>
+{{/if}}
