@@ -3,7 +3,7 @@ async function displayRatings() {
     let recipeId = parseInt(window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
     ])
-    const response = await fetch(`/ratings/post` + recipeId)
+    const response = await fetch(`/ratings/recipe/` + recipeId)
 
     if (response.ok) {
         let ratingSum;
