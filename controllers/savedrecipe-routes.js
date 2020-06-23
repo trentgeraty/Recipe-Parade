@@ -82,7 +82,7 @@ router.get('/:id', (req, res) => {
       }
         // serialize data before passing to template
         const recipe = dbSavedRecipeData.get({ plain: true });
-        res.render('single--saved-recipe', {recipe, loggedIn: true});
+        res.render('single-saved-recipe', {recipe, loggedIn: true});
     })
     .catch(err => {
       console.log(err);
@@ -98,7 +98,7 @@ router.post('/', withAuth, (req, res) => {
         user_id: req.session.user_id
     })
         .then(dbSavedRecipeData => {
-          console.log("here will be the dbsavedrecipedata", dbSavedRecipeData)
+          // console.log("here will be the dbsavedrecipedata", dbSavedRecipeData)
           res.json(dbSavedRecipeData)
         })
         .catch(err => {

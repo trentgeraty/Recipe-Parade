@@ -8,8 +8,8 @@ async function removeFavoriteFormHandler(event) {
       const response = await fetch(`/savedrecipes/${id}`, {
         method: 'DELETE',
         body: JSON.stringify({
-        // recipe_id: id
-        id: id
+        recipe_id: id
+  
         }),
         headers: {
           'Content-Type': 'application/json'
