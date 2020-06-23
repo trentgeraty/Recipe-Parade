@@ -41,7 +41,6 @@ async function submitRating() {
     } else {
         alert(response.statusText)
     }
-
 }
 
 document.getElementById('SUBMIT RATING BUTTON ID').addEventListener('click', submitRating)
