@@ -30,7 +30,8 @@ async function newFormHandler(event) {
     if (response.ok) {
       newRecipeTag();
 
-      document.location.replace('/dashboard');
+      // document.location.replace('/dashboard');
+      document.location.reload();
 
     } else {
       alert(response.statusText);
