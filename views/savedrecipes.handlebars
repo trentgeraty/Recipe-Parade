@@ -1,0 +1,28 @@
+
+{{#if recipes.length}}
+<section>
+  <h2>Favorite Recipes</h2>
+    {{#each recipes as |recipe|}}
+      {{> savedrecipes-recipeinfo recipe}}
+
+
+    {{/each}}
+    
+
+</section>
+
+{{/if}}
+
+test
+
+{{!-- <article class="recipe">
+
+    {{#each recipes as |recipe| }}
+        {{> recipe-info recipe}}
+    {{/each}}
+
+</article> --}}
+
+{{!-- <button type="submit" class="btn">Remove from Favorites</button> --}}
+
+{{!-- <script src="/javascript/add-recipe.js"></script> --}}

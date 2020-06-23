@@ -7,6 +7,11 @@ const withAuth = require('../utils/auth');
 router.get('/', (req, res) => {
     console.log('======================');
     SavedRecipes.findAll({
+      where: {
+        // use the ID from the session
+        user_id: req.session.user_id
+      },
+
       // Query configuration
         attributes: [
                     'id', 
@@ -26,11 +31,16 @@ router.get('/', (req, res) => {
             }
         ]
     })
-        .then(dbSavedRecipeData => res.json(dbSavedRecipeData.reverse()))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then(dbSavedRecipeData => {
+      // serialize data before passing to template
+      const recipes = dbSavedRecipeData.map(recipe => recipe.get({ plain: true }));
+      res.render('savedrecipes', { recipes, loggedIn: true });
+      console.log(recipe1);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   
 });
 

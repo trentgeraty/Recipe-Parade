@@ -1,5 +1,3 @@
-// const { in } = require("sequelize/types/lib/operators");
-
 async function newFormHandler(event) {
     event.preventDefault();
   
