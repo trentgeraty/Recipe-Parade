@@ -17,6 +17,11 @@
     color: var(--black);
   } */
 
+  img.resize {
+    width: 100%;
+    height: 50%;
+  }
+
   .mainbodyimage {
     height: 100px;
     width: 100%
