@@ -6,7 +6,6 @@ class Rating extends Model {}
 
 Rating.init(
   {
-    // define columns
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
