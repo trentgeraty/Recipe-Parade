@@ -73,6 +73,9 @@ body {
     line-height: 1.25;
   }
 
+h2 {
+  background-color: #9bf0e7;
+}
 
   .link {
       color: var(--orange-peel);
@@ -80,10 +83,12 @@ body {
   
   .link:hover {
     color: var(--orange-peel);
-    background-color: #b99665;
+
     transform: translate(0, 0);
     box-shadow: 2px 2px var(--dark);
+    padding: 10px;
   }
+
 
   .wrapper {
     width: 100%;
