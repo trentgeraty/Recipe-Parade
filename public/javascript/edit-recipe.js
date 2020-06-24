@@ -1,35 +1,34 @@
 async function editFormHandler(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const recipeTitle = document.querySelector('input[name="title"]').value.trim();
-    const recipeIngredients = document.querySelector('input[name="ingredients"]').value.trim();
-    const recipeDirections = document.querySelector('input[name="directions"]').value.trim();
-    console.log(recipeTitle);
-    console.log(recipeIngredients);
-    console.log(recipeDirections)
+  const title = document.querySelector('input[name="edit-title"]').value.trim();
+  const ingredients = document.querySelector('input[name="edit-ingredients"]').value.trim();
+  const directions = document.querySelector('input[name="edit-directions"]').value.trim();
+  console.log(title);
+  console.log(ingredients);
+  console.log(directions);
 
-    const id = window.location.toString().split('/')[
-      window.location.toString().split('/').length - 1
-    ];
-      
-      const response = await fetch(`/api/recipes/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify({
-          recipe_id: id,
-          recipeTitle,
-          recipeIngredients,
-          recipeDirections
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        document.location.replace('/dashboard/');
-      } else {
-        alert(response.statusText);
+  const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
+    
+    const response = await fetch(`/api/recipes/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        title,
+        ingredients,
+        directions
+      }),
+      headers: {
+        'Content-Type': 'application/json'
       }
+    });
+    
+    if (response.ok) {
+      document.location.replace('/dashboard/');
+    } else {
+      alert(response.statusText);
+    }
 
 }
 

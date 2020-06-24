@@ -1,15 +1,16 @@
 
 {{#if recipes.length}}
 <section>
-  <h2>Your Recipes</h2>
+  <h2>Manage My Recipes</h2>
     {{#each recipes as |recipe|}}
       {{> dashboard-recipeinfo recipe}}
-
     {{/each}}
 
 </section>
 {{/if}}
 
+{{!-- <button type="submit" class="btn"><a class="btn-link" href="/dashboard/new">+ New Recipe</a></button> --}}
 <button type="submit" class="btn"><a class="link" href="/dashboard/new">+ New Recipe</a></button>
+
 
 <script src="/javascript/add-recipe.js"></script>

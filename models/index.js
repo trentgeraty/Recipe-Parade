@@ -6,6 +6,7 @@ const Comment = require('./Comment');
 const Rating = require('./Rating');
 const Followers = require('./Followers')
 
+
 //create associations
 User.hasMany(Recipe, {
     foreignKey: 'user_id'
@@ -16,9 +17,6 @@ Recipe.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: "cascade"
 });
-
-
-
 
 // User.hasMany(Tag, {
 //     foreignKey: 'user_id'
@@ -82,8 +80,6 @@ Recipe.hasMany(Comment, {
     onDelete: "cascade"
 })
 
-
-
 Tag.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete: "cascade"
@@ -103,7 +99,6 @@ Recipe.hasMany(Tag, {
     foreignKey: 'recipe_id',
     onDelete: "cascade"
 })
-
 
 Rating.belongsTo(User, {
     foreignKey: 'user_id',
