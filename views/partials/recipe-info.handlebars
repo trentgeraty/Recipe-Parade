@@ -1,9 +1,35 @@
+
+
+{{!-- <div class="row"> --}}
+
+    {{!-- <div class="col-4 card">
+            <div class="card-header">
+                <h4><a class="link" href="/recipe/{{id}}">{{title}}</a></h4>
+        </div>
+               <p>Posted by {{user.username}} on {{format_date created_at}}</p>   
+    </div>
+    
+    <div class="col-8 card">
+ 
+            <div>
+            <p class="card-body">Ingredients: {{ingredients}}</p>
+            <p class="card-body">Directions: {{directions}}</p>
+            </div> 
+    </div> --}}
+
+{{!-- </div> --}}
+
 <div class="card">
     <div class="card-header">
         <h4><a class="link" href="/recipe/{{id}}">{{title}}</a></h4>
-        <p>Posted by {{user.username}} on {{format_date created_at}}</p>
+            <div>
+               <p>Posted by {{user.username}} on {{format_date created_at}}</p>     
+            </div>
+
     </div>
+
         <p class="card-body">{{ingredients}}</p>
         <p class="card-body">{{directions}}</p>
 
 </div>
+

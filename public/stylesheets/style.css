@@ -152,7 +152,7 @@ h2 {
 
   /* CARDS */
   .card {
-    margin: 0;
+    margin: 10px;
     border: 1px solid var(--tiffany-blue);
     border-radius: var(--border-radius);
     text-align: left;

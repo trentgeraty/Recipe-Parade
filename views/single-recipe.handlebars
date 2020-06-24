@@ -1,7 +1,15 @@
 
 {{> recipe-info recipe}}
 
+
 {{#if loggedIn}}
+<div>
+        {{!-- <h3 class="card-header"></h3> --}}
+        <form class="card-body favorite-form" id="favorite-form">
+        <button type="submit" class="btn" id="favorite-btn">Save as Favorite</button>
+        </form>
+</div>
+
 <div class="card">
     <h3 class="card-header"></h3>
     <form class="card-body comment-form" id="comment-form">
@@ -15,14 +23,7 @@
 
 </div>
 
-<div>
-        <h3 class="card-header"></h3>
-        <form class="card-body favorite-form" id="favorite-form">
-        <button type="submit" class="btn" id="favorite-btn">Save as Favorite</button>
 
-    </form>
-
-</div>
 {{/if}}
 
 
