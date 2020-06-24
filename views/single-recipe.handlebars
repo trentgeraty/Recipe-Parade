@@ -23,6 +23,18 @@
 
 </div>
 
+<div class="card">
+    <h3 class="card-header"></h3>
+    <form class="card-body rating-form" id="rating-form">
+
+        <label class="form-label">Rating</label>
+        <input id="rating" name="rating-body" class="form-input" />
+
+        <button type="submit" class="btn">Submit</button>
+
+    </form>
+</div>
+
 
 {{/if}}
 
@@ -32,5 +44,6 @@
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/save-favorite.js"></script>
+<script src="/javascript/rating.js"></script>
 
 {{/if}}
