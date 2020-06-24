@@ -1,38 +1,4 @@
-
-// async function newRecipeTag(event) {
-//     event.preventDefault();
-    
-//     const recipeTags = document.querySelector('input[name="recipe-tag"]').value.trim();
-  
-//     const id = window.location.toString().split('/')[
-//       window.location.toString().split('/').length - 1
-//     ];
-  
-//     console.log(recipeTags);
-  
-//     const recipeTagUpdateResponse = await fetch(`/api/tags`, {
-//         method: 'POST',
-//         body: JSON.stringify({
-//           recipeTags,
-//           id
-  
-//         }),
-//         headers: {
-//           'Content-Type': 'application/json'
-//         }
-//     });
-  
-//       if (recipeTagUpdateResponse.ok) {
-//         document.location.replace('/dashboard');
-//       } else {
-//         alert(recipeTagUpdateResponse.statusText);
-//       }
-  
-//   }
-
-//   document.querySelector('#addrecipe-tags-form').addEventListener('submit', newRecipeTag);
-
-  async function tagFormHandler(event) {
+async function tagFormHandler(event) {
     event.preventDefault();
   
     const tag_name = document.querySelector('input[name="tag-body"]').value.trim();
@@ -64,4 +30,4 @@
       }
   }
   
-  document.querySelector('#addrecipe-tags-form').addEventListener('submit', tagFormHandler);
+  document.querySelector('.edit-recipe-form').addEventListener('submit', tagFormHandler);

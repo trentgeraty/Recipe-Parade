@@ -441,6 +441,25 @@ nav {
   .col-md-10 {
     flex: 0 0 calc(100% * 10 / 12 - 2%);
   }
+<<<<<<< HEAD
+=======
+  
+  .form-label {
+    font-size: 1.2rem;
+    margin: 0 0 0 3px;
+    color: var(--black);
+  }
+  
+  .form-input {
+    width: 95%;
+    padding: 2%;
+    margin: 5px 5px;
+    font-size: 1.2rem;
+    border: 2px solid var(--tiffany-blue);
+    border-radius: var(--border-radius);
+  }
+
+>>>>>>> 4efd416d6e7815bd699cc346c73c45e3ff3376d4
 
   .col-md-11 {
     flex: 0 0 calc(100% * 11 / 12 - 2%);
