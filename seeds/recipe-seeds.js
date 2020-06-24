@@ -12,14 +12,14 @@ const recipeData = [
     title: 'Carrot Cake',
     ingredients: 'carrots, flour',
     directions: 'Adding all the directions here.',
-    user_id: 1
+    user_id: 2
     
   },
   {
     title: 'Spinach Lasagna',
     ingredients: 'cottage cheese, lasagna noodles',
     directions: 'Adding all the directions here.',
-    user_id: 1
+    user_id: 3
     
   },
 ];
