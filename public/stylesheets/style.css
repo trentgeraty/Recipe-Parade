@@ -101,8 +101,8 @@ background-color: #9bf0e7;
 }
 
 .app-title {
+  float: left;
   font-size: 4rem;
-  background-color: var(--white);
   color: var(--rose-madder);
   padding: 0 20px;
   display: inline-block;
@@ -136,9 +136,10 @@ p {
 
  .btn:hover {
   color: var(--black);
-  background-color: var(--rose-madder);
+  background-color: var(--orange-peel);
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--dark);
+  transition-duration: 0.3s;
 }
 
 .btn-inline {
@@ -147,6 +148,10 @@ p {
 
 .img {
   width: 100%;
+  height: auto;
+  margin: auto;
+  background-color: var(--tiffany-blue)
+
 
 }
 
@@ -174,7 +179,7 @@ p {
 
 #virtual-image-button:hover {
   color: var(--black);
-  background-color: var(--rose-madder);
+  background-color: var(--orange-peel);
   transform: translate(0, 0);
   box-shadow: 2px 2px var(--dark);
 }
@@ -185,15 +190,15 @@ p {
 /* CARDS */
 .card {
   margin: 10px;
-  border: 1px solid var(--tiffany-blue);
+  border: 2px solid var(--tiffany-blue);
   border-radius: var(--border-radius);
   text-align: left;
+  box-shadow: 5px 5px 8px  #888888;
 
 }
 
 .card-header {
-  color: var(--black);
-  background-color: var(--white);
+  background-color: var(--orange-peel);
   padding: 1%;
   border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
 }
@@ -441,25 +446,6 @@ nav {
   .col-md-10 {
     flex: 0 0 calc(100% * 10 / 12 - 2%);
   }
-<<<<<<< HEAD
-=======
-  
-  .form-label {
-    font-size: 1.2rem;
-    margin: 0 0 0 3px;
-    color: var(--black);
-  }
-  
-  .form-input {
-    width: 95%;
-    padding: 2%;
-    margin: 5px 5px;
-    font-size: 1.2rem;
-    border: 2px solid var(--tiffany-blue);
-    border-radius: var(--border-radius);
-  }
-
->>>>>>> 4efd416d6e7815bd699cc346c73c45e3ff3376d4
 
   .col-md-11 {
     flex: 0 0 calc(100% * 11 / 12 - 2%);
