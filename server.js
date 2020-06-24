@@ -3,7 +3,7 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
 const passport = require('passport');
-const User = require('./models/User');
+// const User = require('./models/User');
 
 // helper function
 const helpers = require('./utils/helpers');
