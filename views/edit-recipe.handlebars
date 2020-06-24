@@ -10,14 +10,17 @@
         <label class="form-label" for="directions">Directions</label>
         <input name="edit-directions" type="text" value="{{recipe.directions}}" class="form-input" />
 
-        {{!-- <label class="form-label" for="recipe-tag">Recipe Tags</label>
-        <input id="recipe-tag" name="recipe-tag" class="form-input" /> --}}
+        <label class="form-label">Tags</label>
+        <input id="tag" name="tag-body" class="form-input" />
 
         <button type="submit" class="edit-recipe-btn btn">Update Recipe</button>
         <button type="button" class="delete-recipe-btn btn">Delete Recipe</button>
+        <button type="submit" class="add-tags-btn btn">Add Tags to Recipe</button>
     </form>
 </div>
 
 
+
 <script src="/javascript/edit-recipe.js"></script>
 <script src="/javascript/delete-recipe.js"></script>
+<script src="/javascript/add-recipe-tag.js"></script>
