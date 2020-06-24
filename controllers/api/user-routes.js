@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Recipe, User, Comment, Tag, Rating, SavedRecipes } = require('../../models');
+const passport = require('passport');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -104,8 +105,46 @@ router.post('/', (req, res) => {
 
 
 // POST to identify users 
-router.post('/login', (req, res) => {
+// router.post('/login', (req, res) => {
+//     // expects {username: 'lernantino', password: 'password1234'}
+//     User.findOne({
+//         where: {
+//             username: req.body.username
+//         }
+//     }).then(dbUserData => {
+//         if (!dbUserData) {
+//             res.status(400).json({ message: 'No user with that username!'});
+//             return;
+//         }
+//         // res.json({ user: dbUserData});
+//         // verify user
+//         const validPassword = dbUserData.checkPassword(req.body.password);
+
+//         if (!validPassword) {
+//             res.status(400).json({ message: 'Incorrect password!' });
+//             return;
+//         }
+//         req.session.save(() => {
+//             // declare session variables
+//             req.session.user_id = dbUserData.id;
+//             req.session.username = dbUserData.username;
+//             req.session.loggedIn = true;
+      
+//             res.json({ user: dbUserData, message: 'You are now logged in!' });
+//         });
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//       });
+// });
+
+// POST to identify users 
+router.post('/login', passport.authenticate('local'), (req, res) => {
     // expects {username: 'lernantino', password: 'password1234'}
+    // console.log('made it to the route');
+    // console.log(req);
+  
     User.findOne({
         where: {
             username: req.body.username
@@ -118,7 +157,7 @@ router.post('/login', (req, res) => {
         // res.json({ user: dbUserData});
         // verify user
         const validPassword = dbUserData.checkPassword(req.body.password);
-
+        
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect password!' });
             return;
@@ -136,7 +175,7 @@ router.post('/login', (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
-});
+  });
 
 
 // users to log out 

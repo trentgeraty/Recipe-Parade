@@ -2,15 +2,8 @@
 {{#if recipes.length}}
 <section>
   <h2>My Favorite Recipes</h2>
-    {{!-- {{#each recipes as |recipe|}}
-      {{> savedrecipes-recipeinfo recipe}}
-    {{/each}} --}}
+
     {{#each recipes as |recipe|}}
-        {{!-- {{this.recipe_id}}
-        {{this.user_id}}
-        {{this.recipe.title}}
-        {{this.recipe.description}}
-        {{this.recipe.directions}} --}}
         {{> savedrecipes-recipeinfo recipe}}
     {{/each}}
 

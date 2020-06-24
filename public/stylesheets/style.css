@@ -152,7 +152,7 @@ h2 {
 
   /* CARDS */
   .card {
-    margin: 0;
+    margin: 10px;
     border: 1px solid var(--tiffany-blue);
     border-radius: var(--border-radius);
     text-align: left;
@@ -194,7 +194,7 @@ h2 {
   }
   
   .form-input {
-    width: 100%;
+    width: 95%;
     padding: 2%;
     margin: 5px 5px;
     font-size: 1.2rem;
