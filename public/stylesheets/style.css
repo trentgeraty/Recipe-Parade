@@ -23,7 +23,6 @@ background-color: var(--white);
 margin: 0 auto; 
 padding: 0;
 font-family: arial, sans-serif;
-/* line-height: 1.0; */
 font-size: 20px;
 
 }
@@ -102,7 +101,6 @@ p {
   outline: none;
   background-color: var(--tiffany-blue);
   align-items: center;
-  /* box-shadow: 3px 3px var(--dark); */
   transform: translate(-1px, -1px);
 }
 

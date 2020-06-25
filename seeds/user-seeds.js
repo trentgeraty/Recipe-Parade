@@ -14,7 +14,7 @@ const userData = [
     username: 'anisha',
     password: 'anisha'
   },
-    {
+  {
     username: 'test',
     password: 'test'
   }
