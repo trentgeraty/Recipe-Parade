@@ -38,6 +38,7 @@ async function submitRating() {
 
     if (response.ok) {
         displayRatings();
+        document.location.reload();
     } else {
         alert(response.statusText)
     }
