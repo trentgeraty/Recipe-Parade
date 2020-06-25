@@ -2,21 +2,6 @@ const router = require('express').Router();
 const { Rating } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// router.get('/recipe/:post_id', (req, res) => {
-//     Rating.findAll({
-//         where: {
-//             post_id: req.params.post_id
-//         }
-//     })
-//     .then( dbRatingData => {
-//         res.json(dbRatingData)
-//     })
-//     .catch( err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//     })
-// })
-
 
 router.get('/', (req, res) => {
     Rating.findAll({})
@@ -26,6 +11,7 @@ router.get('/', (req, res) => {
             res.status(500).json(err); 
         })
 });
+
 
 router.get('/:id', (req, res) => {
     Rating.findAll({
@@ -38,6 +24,7 @@ router.get('/:id', (req, res) => {
             res.status(500).json(err); 
         })
 });
+
 
 router.post('/', withAuth, (req, res) => {
     if (req.session) {
@@ -53,6 +40,7 @@ router.post('/', withAuth, (req, res) => {
         })
     }
 });
+
 
 router.put('/:id', withAuth, (req, res) => {
     Rating.update({
@@ -73,6 +61,8 @@ router.put('/:id', withAuth, (req, res) => {
         res.status(500).json(err);
     });
 });
+
+
 
 router.delete('/:id', withAuth, (req, res) => {
     Rating.destroy({

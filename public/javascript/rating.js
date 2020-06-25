@@ -19,29 +19,39 @@
 
 // window.onload(displayRatings)
 
-async function submitRating() {
-    const ratingValue = document.getElementById('RATING FROM ELEMENT ID').value
-    const recipeId = parseInt(window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ]);
-    
-    const response = fetch('/api/ratings', {
-        method: 'POST',
-        body: JSON.stringify({
-            recipe_id: recipeId,
-            rating: ratingValue
-        }),
-        headers: {
+
+
+
+async function ratingFormHandler(event) {
+    event.preventDefault();
+  
+    const rating = document.querySelector('input[name="rating-body"]').value.trim();
+  
+    const recipe_id = window.location.toString().split('/')[
+      window.location.toString().split('/').length - 1
+    ];
+  
+    // if there is a rating -- preventing from users submitting empty ratings 
+    if (rating) {
+        const response = await fetch('/api/ratings', {
+          method: 'POST',
+          body: JSON.stringify({
+            recipe_id,
+            rating
+          }),
+          headers: {
             'Content-Type': 'application/json'
+          }
+        });
+      
+        if (response.ok) {
+          document.location.reload();
+          
+        } else {
+          alert(response.statusText);
+          document.querySelector('#rating-form').style.display = "block";
         }
-    });
-
-    if (response.ok) {
-        // displayRatings();
-        document.location.reload();
-    } else {
-        alert(response.statusText)
-    }
-}
-
-document.getElementById('#rating-form').addEventListener('click', submitRating)
+      }
+  }
+  
+  document.querySelector('#rating-form').addEventListener('submit', ratingFormHandler);
