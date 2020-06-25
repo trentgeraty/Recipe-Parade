@@ -2,20 +2,22 @@ const router = require('express').Router();
 const { Rating } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/recipe/:post_id', (req, res) => {
-    Rating.findAll({
-        where: {
-            post_id: req.params.post_id
-        }
-    })
-    .then( dbRatingData => {
-        res.json(dbRatingData)
-    })
-    .catch( err => {
-        console.log(err);
-        res.status(500).json(err);
-    })
-})
+// router.get('/recipe/:post_id', (req, res) => {
+//     Rating.findAll({
+//         where: {
+//             post_id: req.params.post_id
+//         }
+//     })
+//     .then( dbRatingData => {
+//         res.json(dbRatingData)
+//     })
+//     .catch( err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     })
+// })
+
+
 router.get('/', (req, res) => {
     Rating.findAll({})
         .then(dbRatingData => res.json(dbRatingData))
