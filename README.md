@@ -17,7 +17,7 @@ The Recipe Parade is an application where the users can sign up and the manage t
 ## Deployed Application 
 
 [Recipe Parade](https://recipe-parade.herokuapp.com/)
-![Image](TBD)
+![Image](https://github.com/izabelacloud/Recipe-Parade/blob/master/assets/Hero-Image.png?raw=true)
 
 
 ## User Story 
