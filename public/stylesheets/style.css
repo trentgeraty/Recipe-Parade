@@ -4,39 +4,10 @@
   --tiffany-blue: #2EC4B6;
   --rose-madder: #E71D36;
   --orange-peel: #FF9F1C;
-  /* color: aliceblue; */
   box-sizing: border-box;
   --border-radius: .3rem;
 }
 
-
-/* 
-.dashboard {
-  padding: 3px 10px;
-  font-size: 12px;
-  border-radius: 3px;
-  border: 1px solid aliceblue;
-}
-
-.logout {
-  padding: 3px 10px;
-  font-size: 12px;
-  border-radius: 3px;
-  border: 1px solid #e1e4e8;
-}
-
-.login {
-  padding: 3px 10px;
-  font-size: 12px;
-  border-radius: 3px;
-  border: 1px solid #e1e4e8;
-} */
-
-/* h1 {
-  font-size: large;
-  font-weight: 400;
-  text-align: center;
-} */
 
 footer {
   padding: 2px 5px;
@@ -45,8 +16,6 @@ footer {
   margin-top: 100px;
   margin-bottom: 50px;
 }
-
-
 
 
 body {
@@ -222,8 +191,6 @@ nav {
 
 }
 
-
-
 /* FORM */
 .form-label,
 .form-input,
@@ -245,9 +212,6 @@ nav {
   border-radius: var(--border-radius);
 }
 
-
-
-
 /* HEIGHT / WIDTH UTILS */
 .min-100-vh {
   min-height: 100vh;
@@ -261,7 +225,6 @@ nav {
 .text-uppercase {
   text-transform: uppercase;
 }
-
 
 /* FLEX CONTENT */
 .flex-row {
