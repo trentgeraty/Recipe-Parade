@@ -171,7 +171,9 @@ p {
 
 .card-header {
   /* background-color: var(--orange-peel); */
-  background-color: #f33f54;
+  /* background-color: #f33f54; */
+  /* background-color: #f7d8dc; */
+  background-color: var(--rose-madder);
   padding: 1%;
   border-radius: calc(.18rem - 1px) calc(.18rem - 1px) 0 0;
 }
